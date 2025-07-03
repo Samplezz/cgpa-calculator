@@ -43,10 +43,10 @@
                             <!-- Semester Selection -->
                             <div class="col-md-6">
                                 <label for="semester" class="form-label fw-semibold">Select Semester:</label>
-                                <select class="form-select" id="semester">
-                                    <option value="1">Semester 1</option>
-                                    <option value="2">Semester 2</option>
-                                </select>
+                                <div class="btn-group w-100" role="group">
+                                    <button type="button" class="btn btn-outline-primary" id="springBtn">Spring 2024</button>
+                                    <button type="button" class="btn btn-outline-primary" id="fallBtn">Fall 2024</button>
+                                </div>
                             </div>
                         </div>
                         
@@ -73,7 +73,7 @@
 
                 <!-- Current Semester Display -->
                 <div class="alert alert-info text-center mb-4" id="currentSemester">
-                    <h5 class="mb-0"><span id="yearDisplay">First Year</span> - <span id="semesterDisplay">Semester 1</span></h5>
+                    <h5 class="mb-0"><span id="yearDisplay">First Year</span> - <span id="semesterDisplay">All Semesters</span></h5>
                 </div>
 
                 <!-- Courses Table -->
@@ -187,6 +187,9 @@
                     <p class="text-muted">
                         <i class="fas fa-graduation-cap me-2"></i>
                         Computer Science Department - Academic GPA Calculator
+                    </p>
+                    <p class="text-muted small">
+                        Made with ❤️ by @sampledoom
                     </p>
                 </footer>
             </div>

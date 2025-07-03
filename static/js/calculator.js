@@ -4,7 +4,7 @@ class GPACalculator {
     constructor() {
         this.courses = [];
         this.currentAcademicYear = 'first';
-        this.currentSemester = '1';
+        this.currentSemester = 'all';
         this.isDarkMode = false;
         
         // Grade scale mapping based on your university system
@@ -15,12 +15,12 @@ class GPACalculator {
             'B+': { points: 3.0, minMarks: 75 },
             'B': { points: 2.7, minMarks: 70 },
             'B-': { points: 2.3, minMarks: 65 },
-            'C+': { points: 2.6, minMarks: 60 }, // Updated to match C+ = 7.80 points for 73 marks
-            'C': { points: 2.4, minMarks: 55 },  // Updated to match C = 4.80 points for 70 marks
-            'C-': { points: 2.2, minMarks: 50 }, // Updated to match C- = 4.40 points for 67 marks
-            'D+': { points: 2.0, minMarks: 45 }, // Added D+ = 6 points for 60 marks
-            'D': { points: 1.5, minMarks: 40 },  // Added D = 4.50 points for 57-59 marks
-            'D-': { points: 1.0, minMarks: 35 }, // Added D- = 3 points for 53 marks
+            'C+': { points: 2.6, minMarks: 60 },
+            'C': { points: 2.4, minMarks: 55 },
+            'C-': { points: 2.2, minMarks: 50 },
+            'D+': { points: 2.0, minMarks: 45 },
+            'D': { points: 1.5, minMarks: 40 },
+            'D-': { points: 1.0, minMarks: 35 },
             'F': { points: 0.0, minMarks: 0 }
         };
         
@@ -52,17 +52,20 @@ class GPACalculator {
     }
     
     setupEventListeners() {
-        // Academic year and semester selection
+        // Academic year selection
         document.getElementById('academicYear').addEventListener('change', (e) => {
             this.currentAcademicYear = e.target.value;
             this.updateDisplay();
             this.saveData();
         });
         
-        document.getElementById('semester').addEventListener('change', (e) => {
-            this.currentSemester = e.target.value;
-            this.updateDisplay();
-            this.saveData();
+        // Semester buttons
+        document.getElementById('springBtn').addEventListener('click', () => {
+            this.filterSemester('spring');
+        });
+        
+        document.getElementById('fallBtn').addEventListener('click', () => {
+            this.filterSemester('fall');
         });
         
         // Dark mode toggle
@@ -85,21 +88,21 @@ class GPACalculator {
         if (this.courses.length === 0) {
             const defaultCourses = [
                 // 2024 - SPRING
-                { name: 'BAS 103 - Physics', credits: 3, marks: 73, icon: 'physics' },
-                { name: 'COM 101 - Introduction to Computers', credits: 3, marks: 53, icon: 'computers' },
-                { name: 'COM 104 - Logic Design', credits: 3, marks: 38, icon: 'logic' },
-                { name: 'GEN 102 - English II', credits: 2, marks: 83, icon: 'english' },
+                { name: 'BAS 103 - Physics', credits: 3, marks: 73, icon: 'physics', semester: 'spring' },
+                { name: 'COM 101 - Introduction to Computers', credits: 3, marks: 53, icon: 'computers', semester: 'spring' },
+                { name: 'COM 104 - Logic Design', credits: 3, marks: 38, icon: 'logic', semester: 'spring' },
+                { name: 'GEN 102 - English II', credits: 2, marks: 83, icon: 'english', semester: 'spring' },
                 // 2024 - FALL
-                { name: 'BAS 101 - Mathematics', credits: 3, marks: 59, icon: 'mathematics' },
-                { name: 'BAS 102 - Discrete Mathematics', credits: 3, marks: 57, icon: 'discrete' },
-                { name: 'BAS 104 - Statistics and Probabilities', credits: 3, marks: 40, icon: 'statistics' },
-                { name: 'COM 102 - Fundamentals of Information Systems', credits: 3, marks: 60, icon: 'information' },
-                { name: 'GEN 101 - English I', credits: 2, marks: 70, icon: 'english' },
-                { name: 'GEN 103 - Social Issues and Anti-corruption', credits: 2, marks: 67, icon: 'social' },
+                { name: 'BAS 101 - Mathematics', credits: 3, marks: 59, icon: 'mathematics', semester: 'fall' },
+                { name: 'BAS 102 - Discrete Mathematics', credits: 3, marks: 57, icon: 'discrete', semester: 'fall' },
+                { name: 'BAS 104 - Statistics and Probabilities', credits: 3, marks: 40, icon: 'statistics', semester: 'fall' },
+                { name: 'COM 102 - Fundamentals of Information Systems', credits: 3, marks: 60, icon: 'information', semester: 'fall' },
+                { name: 'GEN 101 - English I', credits: 2, marks: 70, icon: 'english', semester: 'fall' },
+                { name: 'GEN 103 - Social Issues and Anti-corruption', credits: 2, marks: 67, icon: 'social', semester: 'fall' },
                 // Additional requested courses
-                { name: 'Management', credits: 3, marks: '', icon: 'management' },
-                { name: 'Ethics', credits: 2, marks: '', icon: 'ethics' },
-                { name: 'Programming Language', credits: 3, marks: '', icon: 'programming' }
+                { name: 'Management', credits: 3, marks: '', icon: 'management', semester: 'fall' },
+                { name: 'Ethics', credits: 2, marks: '', icon: 'ethics', semester: 'spring' },
+                { name: 'Programming Language', credits: 3, marks: '', icon: 'programming', semester: 'spring' }
             ];
             
             this.courses = defaultCourses.map((course, index) => ({
@@ -110,13 +113,25 @@ class GPACalculator {
         this.renderCoursesTable();
     }
     
+    filterSemester(semester) {
+        this.currentSemester = semester;
+        
+        // Update button states
+        document.getElementById('springBtn').classList.toggle('active', semester === 'spring');
+        document.getElementById('fallBtn').classList.toggle('active', semester === 'fall');
+        
+        this.updateDisplay();
+        this.saveData();
+    }
+    
     addCourse(courseName = '', credits = 3, marks = '') {
         const newCourse = {
             id: Date.now(), // Use timestamp as unique ID
             name: courseName || 'New Course',
             credits: credits,
             marks: marks,
-            icon: 'default'
+            icon: 'default',
+            semester: this.currentSemester === 'all' ? 'spring' : this.currentSemester
         };
         
         this.courses.push(newCourse);
@@ -176,7 +191,12 @@ class GPACalculator {
         const tbody = document.getElementById('coursesTableBody');
         tbody.innerHTML = '';
         
-        this.courses.forEach(course => {
+        // Filter courses based on selected semester
+        const filteredCourses = this.currentSemester === 'all' 
+            ? this.courses 
+            : this.courses.filter(course => course.semester === this.currentSemester);
+        
+        filteredCourses.forEach(course => {
             const gradeInfo = this.getGradeFromMarks(course.marks);
             const row = document.createElement('tr');
             row.className = 'fade-in';
@@ -188,7 +208,7 @@ class GPACalculator {
                         <input type="text" class="form-control form-control-sm border-0 text-center fw-semibold" 
                                value="${course.name}" 
                                onchange="gpaCalculator.updateCourse(${course.id}, 'name', this.value)"
-                               style="background: transparent; max-width: 150px;">
+                               style="background: transparent; max-width: 200px;">
                     </div>
                 </td>
                 <td class="text-center">
@@ -234,7 +254,12 @@ class GPACalculator {
         let totalQualityPoints = 0;
         let coursesCompleted = 0;
         
-        this.courses.forEach(course => {
+        // Filter courses based on selected semester
+        const filteredCourses = this.currentSemester === 'all' 
+            ? this.courses 
+            : this.courses.filter(course => course.semester === this.currentSemester);
+        
+        filteredCourses.forEach(course => {
             if (course.marks !== '' && !isNaN(course.marks)) {
                 const gradeInfo = this.getGradeFromMarks(course.marks);
                 const credits = parseInt(course.credits) || 0;
@@ -276,13 +301,23 @@ class GPACalculator {
             'fifth': 'Fifth Year'
         };
         
+        const semesterNames = {
+            'spring': 'Spring 2024',
+            'fall': 'Fall 2024',
+            'all': 'All Semesters'
+        };
+        
         document.getElementById('yearDisplay').textContent = yearNames[this.currentAcademicYear];
-        document.getElementById('semesterDisplay').textContent = `Semester ${this.currentSemester}`;
+        document.getElementById('semesterDisplay').textContent = semesterNames[this.currentSemester];
         
         // Update dropdown values
         document.getElementById('academicYear').value = this.currentAcademicYear;
-        document.getElementById('semester').value = this.currentSemester;
         
+        // Update button states
+        document.getElementById('springBtn').classList.toggle('active', this.currentSemester === 'spring');
+        document.getElementById('fallBtn').classList.toggle('active', this.currentSemester === 'fall');
+        
+        this.renderCoursesTable();
         this.calculateGPA();
     }
     
@@ -307,7 +342,7 @@ class GPACalculator {
         if (confirm('Are you sure you want to reset all data? This action cannot be undone.')) {
             this.courses = [];
             this.currentAcademicYear = 'first';
-            this.currentSemester = '1';
+            this.currentSemester = 'all';
             
             this.loadDefaultCourses();
             this.updateDisplay();
