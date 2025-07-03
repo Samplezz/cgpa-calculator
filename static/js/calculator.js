@@ -169,6 +169,8 @@ class GPACalculator {
                 course[field] = value;
             }
             
+            // Re-render the table to update grade displays
+            this.renderCoursesTable();
             this.calculateGPA();
             this.saveData();
         }
