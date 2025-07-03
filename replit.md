@@ -93,7 +93,20 @@ This is a Flask-based web application designed to calculate GPA (Grade Point Ave
 
 Preferred communication style: Simple, everyday language.
 
-## Changelog
+## Recent Changes
 
-Changelog:
-- July 03, 2025. Initial setup
+- July 03, 2025: Initial setup with medical course template
+- July 03, 2025: Renamed to CS CALC - Computer Science GPA Calculator
+- July 03, 2025: Added user's actual course data from Spring and Fall 2024
+- July 03, 2025: Updated grading system to match university standards
+- July 03, 2025: Added semester filtering (Spring, Fall, All Semesters)
+- July 03, 2025: Fixed real-time grade letter updates
+- July 03, 2025: Added cumulative GPA calculation for combined semesters
+- July 03, 2025: Added credit line "Made with ❤️ by @sampledoom"
+
+## User Preferences
+
+- Prefers simple, everyday language
+- Wants real course data from their university transcript
+- Requested CS-themed calculator over medical template
+- Wants semester-based filtering and combined GPA calculation
