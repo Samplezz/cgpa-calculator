@@ -68,6 +68,10 @@ class GPACalculator {
             this.filterSemester('fall');
         });
         
+        document.getElementById('allBtn').addEventListener('click', () => {
+            this.filterSemester('all');
+        });
+        
         // Dark mode toggle
         document.getElementById('toggleDarkMode').addEventListener('click', () => {
             this.toggleDarkMode();
@@ -119,6 +123,12 @@ class GPACalculator {
         // Update button states
         document.getElementById('springBtn').classList.toggle('active', semester === 'spring');
         document.getElementById('fallBtn').classList.toggle('active', semester === 'fall');
+        document.getElementById('allBtn').classList.toggle('active', semester === 'all');
+        
+        // Update button colors
+        document.getElementById('springBtn').className = semester === 'spring' ? 'btn btn-primary' : 'btn btn-outline-primary';
+        document.getElementById('fallBtn').className = semester === 'fall' ? 'btn btn-primary' : 'btn btn-outline-primary';
+        document.getElementById('allBtn').className = semester === 'all' ? 'btn btn-success' : 'btn btn-outline-success';
         
         this.updateDisplay();
         this.saveData();
@@ -272,6 +282,16 @@ class GPACalculator {
         
         const gpa = totalCredits > 0 ? (totalQualityPoints / totalCredits) : 0;
         
+        // Update GPA label based on selected semester
+        const gpaLabel = document.getElementById('gpaLabel');
+        if (this.currentSemester === 'all') {
+            gpaLabel.textContent = 'Cumulative GPA (Spring + Fall)';
+        } else if (this.currentSemester === 'spring') {
+            gpaLabel.textContent = 'Spring 2024 GPA';
+        } else if (this.currentSemester === 'fall') {
+            gpaLabel.textContent = 'Fall 2024 GPA';
+        }
+        
         // Update display
         document.getElementById('semesterGPA').textContent = 
             totalCredits > 0 ? gpa.toFixed(2) : 'N/A';
@@ -314,8 +334,9 @@ class GPACalculator {
         document.getElementById('academicYear').value = this.currentAcademicYear;
         
         // Update button states
-        document.getElementById('springBtn').classList.toggle('active', this.currentSemester === 'spring');
-        document.getElementById('fallBtn').classList.toggle('active', this.currentSemester === 'fall');
+        document.getElementById('springBtn').className = this.currentSemester === 'spring' ? 'btn btn-primary' : 'btn btn-outline-primary';
+        document.getElementById('fallBtn').className = this.currentSemester === 'fall' ? 'btn btn-primary' : 'btn btn-outline-primary';
+        document.getElementById('allBtn').className = this.currentSemester === 'all' ? 'btn btn-success' : 'btn btn-outline-success';
         
         this.renderCoursesTable();
         this.calculateGPA();
@@ -371,7 +392,7 @@ class GPACalculator {
                 const data = JSON.parse(savedData);
                 this.courses = data.courses || [];
                 this.currentAcademicYear = data.currentAcademicYear || 'first';
-                this.currentSemester = data.currentSemester || '1';
+                this.currentSemester = data.currentSemester || 'all';
                 this.isDarkMode = data.isDarkMode || false;
                 
                 // Apply dark mode if saved
