@@ -1,8 +1,8 @@
-# MTI MED (ACADEMIC) GPA Calculator
+# CS CALC - Computer Science GPA Calculator
 
 ## Overview
 
-This is a Flask-based web application designed to calculate GPA (Grade Point Average) for MTI Medical Academic students. The application provides a user-friendly interface for students to input their courses, grades, and credit hours to calculate their semester and cumulative GPA across different academic years.
+This is a Flask-based web application designed to calculate GPA (Grade Point Average) for Computer Science students. The application provides a user-friendly interface for students to input their courses, grades, and credit hours to calculate their semester and cumulative GPA across different academic years. The calculator is pre-loaded with actual course data from the user's university transcript.
 
 ## System Architecture
 

@@ -26,18 +26,18 @@ class GPACalculator {
         
         // Course icons for different subjects
         this.courseIcons = {
-            'anatomy': 'fas fa-user-md',
-            'physiology': 'fas fa-heartbeat',
-            'histology': 'fas fa-microscope',
-            'biochemistry': 'fas fa-flask',
-            'immunology': 'fas fa-shield-virus',
-            'genetics': 'fas fa-dna',
-            'pharmacology': 'fas fa-pills',
-            'pathology': 'fas fa-virus',
-            'microbiology': 'fas fa-bacteria',
-            'surgery': 'fas fa-cut',
-            'medicine': 'fas fa-stethoscope',
-            'pediatrics': 'fas fa-baby',
+            'mathematics': 'fas fa-calculator',
+            'physics': 'fas fa-atom',
+            'computers': 'fas fa-laptop',
+            'programming': 'fas fa-code',
+            'logic': 'fas fa-microchip',
+            'english': 'fas fa-language',
+            'statistics': 'fas fa-chart-bar',
+            'discrete': 'fas fa-project-diagram',
+            'information': 'fas fa-database',
+            'social': 'fas fa-users',
+            'ethics': 'fas fa-balance-scale',
+            'management': 'fas fa-tasks',
             'default': 'fas fa-book'
         };
         
@@ -84,12 +84,22 @@ class GPACalculator {
     loadDefaultCourses() {
         if (this.courses.length === 0) {
             const defaultCourses = [
-                { name: 'Anatomy', credits: 3, marks: '', icon: 'anatomy' },
-                { name: 'Physiology', credits: 2, marks: '', icon: 'physiology' },
-                { name: 'Histology', credits: 2, marks: '', icon: 'histology' },
-                { name: 'Biochemistry', credits: 4, marks: '', icon: 'biochemistry' },
-                { name: 'Immunology', credits: 2, marks: '', icon: 'immunology' },
-                { name: 'Genetics', credits: 2, marks: '', icon: 'genetics' }
+                // 2024 - SPRING
+                { name: 'BAS 103 - Physics', credits: 3, marks: 73, icon: 'physics' },
+                { name: 'COM 101 - Introduction to Computers', credits: 3, marks: 53, icon: 'computers' },
+                { name: 'COM 104 - Logic Design', credits: 3, marks: 38, icon: 'logic' },
+                { name: 'GEN 102 - English II', credits: 2, marks: 83, icon: 'english' },
+                // 2024 - FALL
+                { name: 'BAS 101 - Mathematics', credits: 3, marks: 59, icon: 'mathematics' },
+                { name: 'BAS 102 - Discrete Mathematics', credits: 3, marks: 57, icon: 'discrete' },
+                { name: 'BAS 104 - Statistics and Probabilities', credits: 3, marks: 40, icon: 'statistics' },
+                { name: 'COM 102 - Fundamentals of Information Systems', credits: 3, marks: 60, icon: 'information' },
+                { name: 'GEN 101 - English I', credits: 2, marks: 70, icon: 'english' },
+                { name: 'GEN 103 - Social Issues and Anti-corruption', credits: 2, marks: 67, icon: 'social' },
+                // Additional requested courses
+                { name: 'Management', credits: 3, marks: '', icon: 'management' },
+                { name: 'Ethics', credits: 2, marks: '', icon: 'ethics' },
+                { name: 'Programming Language', credits: 3, marks: '', icon: 'programming' }
             ];
             
             this.courses = defaultCourses.map((course, index) => ({
