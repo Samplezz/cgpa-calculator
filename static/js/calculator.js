@@ -7,7 +7,7 @@ class GPACalculator {
         this.currentSemester = '1';
         this.isDarkMode = false;
         
-        // Grade scale mapping
+        // Grade scale mapping based on your university system
         this.gradeScale = {
             'A+': { points: 4.0, minMarks: 90 },
             'A': { points: 3.7, minMarks: 85 },
@@ -15,9 +15,12 @@ class GPACalculator {
             'B+': { points: 3.0, minMarks: 75 },
             'B': { points: 2.7, minMarks: 70 },
             'B-': { points: 2.3, minMarks: 65 },
-            'C+': { points: 2.0, minMarks: 60 },
-            'C': { points: 1.7, minMarks: 55 },
-            'C-': { points: 1.3, minMarks: 50 },
+            'C+': { points: 2.6, minMarks: 60 }, // Updated to match C+ = 7.80 points for 73 marks
+            'C': { points: 2.4, minMarks: 55 },  // Updated to match C = 4.80 points for 70 marks
+            'C-': { points: 2.2, minMarks: 50 }, // Updated to match C- = 4.40 points for 67 marks
+            'D+': { points: 2.0, minMarks: 45 }, // Added D+ = 6 points for 60 marks
+            'D': { points: 1.5, minMarks: 40 },  // Added D = 4.50 points for 57-59 marks
+            'D-': { points: 1.0, minMarks: 35 }, // Added D- = 3 points for 53 marks
             'F': { points: 0.0, minMarks: 0 }
         };
         
