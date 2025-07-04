@@ -7,21 +7,21 @@ class GPACalculator {
         this.currentSemester = 'all';
         this.isDarkMode = false;
         
-        // Grade scale mapping based on your university's exact transcript system
+        // Grade scale mapping based on your university's exact grading scale
         this.gradeScale = {
             'A+': { points: 4.0, minMarks: 96 },
-            'A': { points: 4.0, minMarks: 92 },
-            'A-': { points: 3.7, minMarks: 88 },
-            'B+': { points: 3.3, minMarks: 84 },
-            'B': { points: 3.0, minMarks: 80 },   // B for 80-84 marks = 3.0 × 2 credits = 6.00 total points (GEN 102-English II)
-            'B-': { points: 2.7, minMarks: 76 },  // B- for 76-80 marks
-            'C+': { points: 2.6, minMarks: 72 },  // C+ for 72-76 marks = 2.6 × 3 credits = 7.80 total points (BAS 103-Physics)
-            'C': { points: 2.4, minMarks: 68 },   // C for 68-72 marks = 2.4 × 2 credits = 4.80 total points (GEN 101-English I)
-            'C-': { points: 2.2, minMarks: 64 },  // C- for 64-68 marks = 2.2 × 2 credits = 4.40 total points (GEN 103-Social Issues)
-            'D+': { points: 2.0, minMarks: 60 },  // D+ for 60-64 marks = 2.0 × 3 credits = 6.00 total points (COM 102-Information Systems)
-            'D': { points: 1.5, minMarks: 55 },   // D for 55-60 marks = 1.5 × 3 credits = 4.50 total points (BAS 101&102)
-            'D-': { points: 1.0, minMarks: 50 },  // D- for 50-55 marks = 1.0 × 3 credits = 3.00 total points (COM 101-Computers)
-            'F': { points: 0.0, minMarks: 0 }     // F for marks below 50
+            'A': { points: 3.7, minMarks: 92 },   // 92-95 = A (3.7)
+            'A-': { points: 3.4, minMarks: 88 },  // 88-91 = A- (3.4)
+            'B+': { points: 3.2, minMarks: 84 },  // 84-87 = B+ (3.2)
+            'B': { points: 3.0, minMarks: 80 },   // 80-83 = B (3.0)
+            'B-': { points: 2.8, minMarks: 76 },  // 76-79 = B- (2.8)
+            'C+': { points: 2.6, minMarks: 72 },  // 72-75 = C+ (2.6)
+            'C': { points: 2.4, minMarks: 68 },   // 68-71 = C (2.4)
+            'C-': { points: 2.2, minMarks: 64 },  // 64-67 = C- (2.2)
+            'D+': { points: 2.0, minMarks: 60 },  // 60-63 = D+ (2.0)
+            'D': { points: 1.5, minMarks: 55 },   // 55-59 = D (1.5)
+            'D-': { points: 1.0, minMarks: 50 },  // 50-54 = D- (1.0)
+            'F': { points: 0.0, minMarks: 0 }     // Below 50 = F (0.0)
         };
         
         // Course icons for different subjects
@@ -92,24 +92,21 @@ class GPACalculator {
     loadDefaultCourses() {
         if (this.courses.length === 0) {
             const defaultCourses = [
-                // 2024 - SPRING (exact transcript data)
-                { name: 'BAS 103 - Physics', credits: 3, marks: 73, icon: 'physics', semester: 'spring' },
-                { name: 'COM 101 - Introduction to Computers', credits: 3, marks: 53, icon: 'computers', semester: 'spring' },
-                { name: 'COM 104 - Logic Design', credits: 3, marks: 38, icon: 'logic', semester: 'spring' },
-                { name: 'GEN 102 - English II', credits: 2, marks: 83, icon: 'english', semester: 'spring' },
-                // 2024 - FALL (exact transcript data)
-                { name: 'BAS 101 - Mathematics', credits: 3, marks: 59, icon: 'mathematics', semester: 'fall' },
-                { name: 'BAS 102 - Discrete Mathematics', credits: 3, marks: 57, icon: 'discrete', semester: 'fall' },
-                { name: 'BAS 104 - Statistics and Probabilities', credits: 3, marks: 40, icon: 'statistics', semester: 'fall' },
-                { name: 'COM 101 - Introduction to Computers', credits: 3, marks: 39, icon: 'computers', semester: 'fall' },
-                { name: 'COM 102 - Fundamentals of Information Systems', credits: 3, marks: 60, icon: 'information', semester: 'fall' },
-                { name: 'GEN 101 - English I', credits: 2, marks: 70, icon: 'english', semester: 'fall' },
-                { name: 'GEN 103 - Social Issues and Anti-corruption', credits: 2, marks: 67, icon: 'social', semester: 'fall' },
-                // Additional requested courses
-                { name: 'Management', credits: 3, marks: '', icon: 'management', semester: 'fall' },
-                { name: 'Ethics', credits: 2, marks: '', icon: 'ethics', semester: 'spring' },
-                { name: 'Programming Language', credits: 3, marks: '', icon: 'programming', semester: 'spring' },
-                { name: 'Creative Thinking', credits: 2, marks: '', icon: 'creative', semester: 'spring' }
+                // SPRING 2024 (exact transcript data)
+                { name: 'BAS 102 - Discrete Mathematics', credits: 3, marks: 75, icon: 'discrete', semester: 'spring' },
+                { name: 'BAS 103 - Physics', credits: 3, marks: 77, icon: 'physics', semester: 'spring' },
+                { name: 'BAS 203 - Fundamentals of Management', credits: 3, marks: 79, icon: 'management', semester: 'spring' },
+                { name: 'COM 103 - Programming', credits: 3, marks: 62, icon: 'programming', semester: 'spring' },
+                { name: 'GEN 102 - English II', credits: 2, marks: 90, icon: 'english', semester: 'spring' },
+                { name: 'GEN 113 - Creative Thinking', credits: 2, marks: 90, icon: 'creative', semester: 'spring' },
+                // FALL 2024 (exact transcript data)
+                { name: 'BAS 101 - Mathematics', credits: 3, marks: 62, icon: 'mathematics', semester: 'fall' },
+                { name: 'BAS 102 - Discrete Mathematics', credits: 3, marks: 35, icon: 'discrete', semester: 'fall' },
+                { name: 'BAS 104 - Statistics and Probabilities', credits: 3, marks: 64, icon: 'statistics', semester: 'fall' },
+                { name: 'COM 101 - Introduction to Computers', credits: 3, marks: 71, icon: 'computers', semester: 'fall' },
+                { name: 'COM 102 - Fundamentals of IS', credits: 3, marks: 69, icon: 'information', semester: 'fall' },
+                { name: 'GEN 101 - English I', credits: 2, marks: 87, icon: 'english', semester: 'fall' },
+                { name: 'GEN 103 - Social Issues & Anti-Corruption', credits: 2, marks: 70, icon: 'social', semester: 'fall' }
             ];
             
             this.courses = defaultCourses.map((course, index) => ({
