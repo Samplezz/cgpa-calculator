@@ -1,14 +1,14 @@
 /* Custom CSS for GPA Calculator */
 
 :root {
-    --primary-color: #0d6efd;
-    --secondary-color: #6c757d;
-    --success-color: #198754;
+    --primary-color: #ff6b35;
+    --secondary-color: #1a1a1a;
+    --success-color: #ff6b35;
     --danger-color: #dc3545;
-    --warning-color: #ffc107;
-    --info-color: #0dcaf0;
+    --warning-color: #ff6b35;
+    --info-color: #ff6b35;
     --light-color: #f8f9fa;
-    --dark-color: #212529;
+    --dark-color: #1a1a1a;
 }
 
 /* Dark theme variables */
@@ -20,9 +20,10 @@
 }
 
 body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #ff6b35 0%, #1a1a1a 100%);
     min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
 }
 
 /* Dark mode body */
@@ -36,11 +37,12 @@ body {
 
 /* Card styling */
 .card {
-    border: none;
+    border: 1px solid rgba(255, 107, 53, 0.3);
     border-radius: 15px;
     backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(26, 26, 26, 0.8);
     transition: all 0.3s ease;
+    color: white;
 }
 
 [data-bs-theme="dark"] .card {
@@ -71,7 +73,7 @@ body {
 }
 
 .table tbody tr:hover {
-    background-color: rgba(13, 110, 253, 0.1);
+    background-color: rgba(255, 107, 53, 0.1);
     transform: scale(1.01);
 }
 
@@ -84,7 +86,7 @@ body {
 
 .form-control:focus, .form-select:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 53, 0.25);
     transform: translateY(-1px);
 }
 
@@ -103,7 +105,7 @@ body {
 }
 
 .btn-success {
-    background: linear-gradient(45deg, #28a745, #20c997);
+    background: linear-gradient(45deg, #ff6b35, #ff8c42);
     border: none;
 }
 
@@ -114,6 +116,24 @@ body {
 
 .btn-outline-secondary {
     border: 2px solid var(--secondary-color);
+}
+
+.btn-outline-primary {
+    border: 2px solid #ff6b35;
+    color: #ff6b35;
+    background: transparent;
+}
+
+.btn-outline-primary:hover {
+    background: #ff6b35;
+    border-color: #ff6b35;
+    color: white;
+}
+
+.btn-outline-primary.active {
+    background: #ff6b35;
+    border-color: #ff6b35;
+    color: white;
 }
 
 /* Icon styling */

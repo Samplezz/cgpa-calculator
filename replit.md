@@ -103,6 +103,11 @@ Preferred communication style: Simple, everyday language.
 - July 03, 2025: Fixed real-time grade letter updates
 - July 03, 2025: Added cumulative GPA calculation for combined semesters
 - July 03, 2025: Added credit line "Made with ❤️ by @sampledoom"
+- July 04, 2025: Updated grading scale with exact university point values (A=3.7, A-=3.4, B+=3.2, B-=2.8)
+- July 04, 2025: Added exact transcript data from Spring and Fall 2024
+- July 04, 2025: Changed title to "HNU CSIT CGPA CALC" 
+- July 04, 2025: Implemented orange and black color theme with red calculator emoji
+- July 04, 2025: Updated all UI elements to match new theme (buttons, cards, forms)
 
 ## User Preferences
 
