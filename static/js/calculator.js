@@ -9,19 +9,19 @@ class GPACalculator {
         
         // Grade scale mapping based on your university's exact transcript system
         this.gradeScale = {
-            'A+': { points: 4.0, minMarks: 95 },
-            'A': { points: 4.0, minMarks: 90 },
-            'A-': { points: 3.7, minMarks: 85 },
-            'B+': { points: 3.3, minMarks: 80 },
-            'B': { points: 3.0, minMarks: 75 },   // B for 83 marks = 3.0 × 2 credits = 6.00 total points (GEN 102-English II)
-            'B-': { points: 2.7, minMarks: 71 },
-            'C+': { points: 2.6, minMarks: 71 },  // C+ for 73 marks = 2.6 × 3 credits = 7.80 total points (BAS 103-Physics)
+            'A+': { points: 4.0, minMarks: 96 },
+            'A': { points: 4.0, minMarks: 92 },
+            'A-': { points: 3.7, minMarks: 88 },
+            'B+': { points: 3.3, minMarks: 84 },
+            'B': { points: 3.0, minMarks: 80 },   // B for 83 marks = 3.0 × 2 credits = 6.00 total points (GEN 102-English II)
+            'B-': { points: 2.7, minMarks: 76 },
+            'C+': { points: 2.6, minMarks: 72 },  // C+ for 73 marks = 2.6 × 3 credits = 7.80 total points (BAS 103-Physics)
             'C': { points: 2.4, minMarks: 68 },   // C for 70 marks = 2.4 × 2 credits = 4.80 total points (GEN 101-English I)
-            'C-': { points: 2.2, minMarks: 65 },  // C- for 67 marks = 2.2 × 2 credits = 4.40 total points (GEN 103-Social Issues)
+            'C-': { points: 2.2, minMarks: 64 },  // C- for 67 marks = 2.2 × 2 credits = 4.40 total points (GEN 103-Social Issues)
             'D+': { points: 2.0, minMarks: 60 },  // D+ for 60 marks = 2.0 × 3 credits = 6.00 total points (COM 102-Information Systems)
-            'D': { points: 1.5, minMarks: 55 },   // D for 57-59 marks = 1.5 × 3 credits = 4.50 total points (BAS 101&102)
-            'D-': { points: 1.0, minMarks: 50 },  // D- for 53 marks = 1.0 × 3 credits = 3.00 total points (COM 101-Computers)
-            'F': { points: 0.0, minMarks: 0 }     // F for marks below 50
+            'D': { points: 1.5, minMarks: 56 },   // D for 57-59 marks = 1.5 × 3 credits = 4.50 total points (BAS 101&102)
+            'D-': { points: 1.0, minMarks: 52 },  // D- for 53 marks = 1.0 × 3 credits = 3.00 total points (COM 101-Computers)
+            'F': { points: 0.0, minMarks: 0 }     // F for marks below 52
         };
         
         // Course icons for different subjects
