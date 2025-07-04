@@ -359,8 +359,8 @@
                             <div class="col-md-6">
                                 <label for="semester" class="form-label fw-semibold">Select Semester:</label>
                                 <div class="btn-group w-100" role="group">
-                                    <button type="button" class="btn btn-outline-primary" id="springBtn">Spring 2024</button>
-                                    <button type="button" class="btn btn-outline-primary" id="fallBtn">Fall 2024</button>
+                                    <button type="button" class="btn btn-outline-primary" id="springBtn">Spring 2025</button>
+                                    <button type="button" class="btn btn-outline-primary" id="fallBtn">Fall 2025</button>
                                     <button type="button" class="btn btn-outline-primary active" id="allBtn">All Semesters</button>
                                 </div>
                             </div>
@@ -628,15 +628,44 @@
                         course[field] = parseInt(value) || 0;
                     } else if (field === 'marks') {
                         course[field] = parseFloat(value) || '';
+                        // Update just the grade badge for this specific course
+                        this.updateGradeBadge(courseId, course.marks);
                     } else {
                         course[field] = value;
                     }
                     
-                    // Re-render the table to update grade badges in real-time
-                    this.renderCoursesTable();
                     this.calculateGPA();
                     this.saveData();
                 }
+            }
+            
+            updateCourseMarks(courseId, value) {
+                const course = this.courses.find(c => c.id === courseId);
+                if (course) {
+                    course.marks = parseFloat(value) || '';
+                    // Update just the grade badge without re-rendering the whole table
+                    this.updateGradeBadge(courseId, course.marks);
+                    this.calculateGPA();
+                    this.saveData();
+                }
+            }
+            
+            updateGradeBadge(courseId, marks) {
+                const grade = this.getGradeFromMarks(marks);
+                const gradeClass = this.getGradeBadgeClass(grade);
+                
+                // Find the grade badge element and update it
+                const rows = document.querySelectorAll('#coursesTableBody tr');
+                rows.forEach(row => {
+                    const deleteBtn = row.querySelector('button[onclick*="' + courseId + '"]');
+                    if (deleteBtn) {
+                        const gradeBadge = row.querySelector('.grade-badge');
+                        if (gradeBadge) {
+                            gradeBadge.className = `grade-badge ${gradeClass}`;
+                            gradeBadge.textContent = grade;
+                        }
+                    }
+                });
             }
             
             getGradeFromMarks(marks) {
@@ -711,7 +740,7 @@
                             <input type="number" class="form-control form-control-sm" 
                                    value="${course.marks}" min="0" max="100" step="0.1"
                                    onchange="gpaCalculator.updateCourse(${course.id}, 'marks', this.value)"
-                                   oninput="gpaCalculator.updateCourse(${course.id}, 'marks', this.value)">
+                                   oninput="gpaCalculator.updateCourseMarks(${course.id}, this.value)">
                         </td>
                         <td>
                             <span class="grade-badge ${gradeClass}">${grade}</span>
