@@ -440,46 +440,31 @@
                                 </h6>
                             </div>
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <table class="table table-sm">
-                                            <thead>
-                                                <tr>
-                                                    <th>Grade</th>
-                                                    <th>Points</th>
-                                                    <th>Marks Range</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr><td>A+</td><td>4.0</td><td>96-100</td></tr>
-                                                <tr><td>A</td><td>3.7</td><td>92-95</td></tr>
-                                                <tr><td>A-</td><td>3.4</td><td>88-91</td></tr>
-                                                <tr><td>B+</td><td>3.2</td><td>84-87</td></tr>
-                                                <tr><td>B</td><td>3.0</td><td>80-83</td></tr>
-                                                <tr><td>B-</td><td>2.8</td><td>76-79</td></tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <table class="table table-sm">
-                                            <thead>
-                                                <tr>
-                                                    <th>Grade</th>
-                                                    <th>Points</th>
-                                                    <th>Marks Range</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr><td>C+</td><td>2.6</td><td>72-75</td></tr>
-                                                <tr><td>C</td><td>2.4</td><td>68-71</td></tr>
-                                                <tr><td>C-</td><td>2.2</td><td>64-67</td></tr>
-                                                <tr><td>D+</td><td>2.0</td><td>60-63</td></tr>
-                                                <tr><td>D</td><td>1.5</td><td>55-59</td></tr>
-                                                <tr><td>D-</td><td>1.0</td><td>50-54</td></tr>
-                                                <tr><td>F</td><td>0.0</td><td>Below 50</td></tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                <div class="table-responsive">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Grade</th>
+                                                <th>Points</th>
+                                                <th>Marks Range</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td><span class="grade-badge grade-a-plus">A+</span></td><td><strong>4.0</strong></td><td>96-100</td></tr>
+                                            <tr><td><span class="grade-badge grade-a">A</span></td><td><strong>3.7</strong></td><td>92-95</td></tr>
+                                            <tr><td><span class="grade-badge grade-a-minus">A-</span></td><td><strong>3.4</strong></td><td>88-91</td></tr>
+                                            <tr><td><span class="grade-badge grade-b-plus">B+</span></td><td><strong>3.2</strong></td><td>84-87</td></tr>
+                                            <tr><td><span class="grade-badge grade-b">B</span></td><td><strong>3.0</strong></td><td>80-83</td></tr>
+                                            <tr><td><span class="grade-badge grade-b-minus">B-</span></td><td><strong>2.8</strong></td><td>76-79</td></tr>
+                                            <tr><td><span class="grade-badge grade-c-plus">C+</span></td><td><strong>2.6</strong></td><td>72-75</td></tr>
+                                            <tr><td><span class="grade-badge grade-c">C</span></td><td><strong>2.4</strong></td><td>68-71</td></tr>
+                                            <tr><td><span class="grade-badge grade-c-minus">C-</span></td><td><strong>2.2</strong></td><td>64-67</td></tr>
+                                            <tr><td><span class="grade-badge grade-d-plus">D+</span></td><td><strong>2.0</strong></td><td>60-63</td></tr>
+                                            <tr><td><span class="grade-badge grade-d">D</span></td><td><strong>1.5</strong></td><td>55-59</td></tr>
+                                            <tr><td><span class="grade-badge grade-d-minus">D-</span></td><td><strong>1.0</strong></td><td>50-54</td></tr>
+                                            <tr><td><span class="grade-badge grade-f">F</span></td><td><strong>0.0</strong></td><td>0-49</td></tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -507,21 +492,21 @@
                 this.isDarkMode = false;
                 
                 // Grade scale mapping based on your university's exact grading scale
-                this.gradeScale = {
-                    'A+': { points: 4.0, minMarks: 96 },
-                    'A': { points: 3.7, minMarks: 92 },   // 92-95 = A (3.7)
-                    'A-': { points: 3.4, minMarks: 88 },  // 88-91 = A- (3.4)
-                    'B+': { points: 3.2, minMarks: 84 },  // 84-87 = B+ (3.2)
-                    'B': { points: 3.0, minMarks: 80 },   // 80-83 = B (3.0)
-                    'B-': { points: 2.8, minMarks: 76 },  // 76-79 = B- (2.8)
-                    'C+': { points: 2.6, minMarks: 72 },  // 72-75 = C+ (2.6)
-                    'C': { points: 2.4, minMarks: 68 },   // 68-71 = C (2.4)
-                    'C-': { points: 2.2, minMarks: 64 },  // 64-67 = C- (2.2)
-                    'D+': { points: 2.0, minMarks: 60 },  // 60-63 = D+ (2.0)
-                    'D': { points: 1.5, minMarks: 55 },   // 55-59 = D (1.5)
-                    'D-': { points: 1.0, minMarks: 50 },  // 50-54 = D- (1.0)
-                    'F': { points: 0.0, minMarks: 0 }     // Below 50 = F (0.0)
-                };
+                this.gradeScale = [
+                    { grade: 'A+', points: 4.0, minMarks: 96, maxMarks: 100 },
+                    { grade: 'A', points: 3.7, minMarks: 92, maxMarks: 95 },
+                    { grade: 'A-', points: 3.4, minMarks: 88, maxMarks: 91 },
+                    { grade: 'B+', points: 3.2, minMarks: 84, maxMarks: 87 },
+                    { grade: 'B', points: 3.0, minMarks: 80, maxMarks: 83 },
+                    { grade: 'B-', points: 2.8, minMarks: 76, maxMarks: 79 },
+                    { grade: 'C+', points: 2.6, minMarks: 72, maxMarks: 75 },
+                    { grade: 'C', points: 2.4, minMarks: 68, maxMarks: 71 },
+                    { grade: 'C-', points: 2.2, minMarks: 64, maxMarks: 67 },
+                    { grade: 'D+', points: 2.0, minMarks: 60, maxMarks: 63 },
+                    { grade: 'D', points: 1.5, minMarks: 55, maxMarks: 59 },
+                    { grade: 'D-', points: 1.0, minMarks: 50, maxMarks: 54 },
+                    { grade: 'F', points: 0.0, minMarks: 0, maxMarks: 49 }
+                ];
                 
                 // Course icons for different subjects
                 this.courseIcons = {
@@ -646,6 +631,9 @@
                     } else {
                         course[field] = value;
                     }
+                    
+                    // Re-render the table to update grade badges in real-time
+                    this.renderCoursesTable();
                     this.calculateGPA();
                     this.saveData();
                 }
@@ -656,9 +644,10 @@
                 
                 const numMarks = parseFloat(marks);
                 
-                for (const [grade, scale] of Object.entries(this.gradeScale)) {
-                    if (numMarks >= scale.minMarks) {
-                        return grade;
+                // Find the appropriate grade based on marks range
+                for (const gradeInfo of this.gradeScale) {
+                    if (numMarks >= gradeInfo.minMarks && numMarks <= gradeInfo.maxMarks) {
+                        return gradeInfo.grade;
                     }
                 }
                 return 'F';
@@ -721,7 +710,8 @@
                         <td>
                             <input type="number" class="form-control form-control-sm" 
                                    value="${course.marks}" min="0" max="100" step="0.1"
-                                   onchange="gpaCalculator.updateCourse(${course.id}, 'marks', this.value)">
+                                   onchange="gpaCalculator.updateCourse(${course.id}, 'marks', this.value)"
+                                   oninput="gpaCalculator.updateCourse(${course.id}, 'marks', this.value)">
                         </td>
                         <td>
                             <span class="grade-badge ${gradeClass}">${grade}</span>
@@ -751,7 +741,8 @@
                 filteredCourses.forEach(course => {
                     if (course.marks !== '' && course.marks !== null && course.marks !== undefined) {
                         const grade = this.getGradeFromMarks(course.marks);
-                        const points = this.gradeScale[grade].points;
+                        const gradeInfo = this.gradeScale.find(g => g.grade === grade);
+                        const points = gradeInfo ? gradeInfo.points : 0;
                         
                         totalPoints += points * course.credits;
                         totalCredits += course.credits;
