@@ -24,3 +24,18 @@ Developed by **Louay Mohammed** (aka Sample)
 Student at **Helwan National University**  
 GitHub: [@Samplezz](https://github.com/Samplezz)
 Another work: https://solo.to/sampledoom
+![Profile Views](https://komarev.com/ghpvc/?username=Samplezz&color=blue&style=flat)
+![Repo Clones](https://img.shields.io/badge/Clones-45-blue)
+![Unique Cloners](https://img.shields.io/badge/Unique%20Cloners-35-brightgreen)
+---
+
+## 📊 Repo Analytics
+
+- 👥 **45 total clones**  
+- 🧍‍♂️ **35 unique cloners**  
+- 🔎 **91 total views**  
+- 🌐 Top Referrers:
+  - GitHub.com: 38 views
+  - ChatGPT.com: 35 views
+
+![Profile Views](https://komarev.com/ghpvc/?username=Samplezz&color=blue&style=flat)
