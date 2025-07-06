@@ -30,6 +30,3 @@ Another work: https://solo.to/sampledoom
 ![Unique Cloners](https://img.shields.io/badge/Unique%20Cloners-35-brightgreen)
 ---
 
-
-
-![Profile Views](https://komarev.com/ghpvc/?username=Samplezz&color=blue&style=flat)
